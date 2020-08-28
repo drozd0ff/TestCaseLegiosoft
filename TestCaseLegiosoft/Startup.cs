@@ -1,10 +1,11 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using TestCaseLegiosoft.Persistence;
 
 namespace TestCaseLegiosoft
 {
@@ -22,6 +23,10 @@ namespace TestCaseLegiosoft
         {
             services.AddControllers();
 
+            services.AddDbContext<DataContext>
+            (x => x
+                .UseSqlServer(Configuration.GetConnectionString("TestDatabase")));
+
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo {Title = "Legiosoft Test Case API"});
@@ -34,6 +39,12 @@ namespace TestCaseLegiosoft
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DataContext>();
+                context.Database.Migrate();
             }
 
             app.UseHttpsRedirection();
