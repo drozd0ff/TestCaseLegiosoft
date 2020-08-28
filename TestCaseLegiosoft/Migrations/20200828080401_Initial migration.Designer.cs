@@ -9,7 +9,7 @@ using TestCaseLegiosoft.Persistence;
 namespace TestCaseLegiosoft.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200827194748_Initial migration")]
+    [Migration("20200828080401_Initial migration")]
     partial class Initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,11 +33,13 @@ namespace TestCaseLegiosoft.Migrations
                     b.Property<string>("ClientName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TransactionStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("TransactionStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TransactionType")
-                        .HasColumnType("int");
+                    b.Property<string>("TransactionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TransactionId");
 

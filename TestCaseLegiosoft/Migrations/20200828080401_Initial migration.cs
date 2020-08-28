@@ -12,8 +12,8 @@ namespace TestCaseLegiosoft.Migrations
                 {
                     TransactionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TransactionStatus = table.Column<int>(nullable: false),
-                    TransactionType = table.Column<int>(nullable: false),
+                    TransactionStatus = table.Column<string>(nullable: false),
+                    TransactionType = table.Column<string>(nullable: false),
                     ClientName = table.Column<string>(nullable: true),
                     Amount = table.Column<decimal>(type: "decimal(13, 2)", nullable: false)
                 },
