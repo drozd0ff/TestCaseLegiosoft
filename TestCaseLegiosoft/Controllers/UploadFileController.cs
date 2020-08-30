@@ -20,13 +20,11 @@ namespace TestCaseLegiosoft.Controllers
     {
         public IConfiguration Configuration { get; }
         private readonly ILogger<UploadFileController> _logger;
-        private readonly DataContext _context;
 
         public UploadFileController(ILogger<UploadFileController> logger, DataContext context, IConfiguration configuration)
         {
             Configuration = configuration;
             _logger = logger;
-            _context = context;
         }
 
         [HttpPost]
@@ -115,7 +113,7 @@ namespace TestCaseLegiosoft.Controllers
 
                 //Now use the merge command to upsert from the temp table to the production table
                 string mergeSql = "SET IDENTITY_INSERT dbo.TransactionModels ON;" +
-                                  "MERGE INTO TransactionModels AS Target " +
+                                  "MERGE INTO TransactionModels WITH (HOLDLOCK) AS Target " +
                                   "USING #DataToMerge AS Source " +
                                   "ON " +
                                   "Target.TransactionId=Source.TransactionId " +
