@@ -24,7 +24,7 @@ namespace TestCaseLegiosoft.Persistence
             modelBuilder.Entity<TransactionModel>()
                 .Property(x => x.TransactionType)
                 .HasConversion(transactionTypeConverter);
-        
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 using TestCaseLegiosoft.Persistence;
 
 namespace TestCaseLegiosoft
@@ -27,7 +27,7 @@ namespace TestCaseLegiosoft
 
             services.AddControllers()
                 // Enums as strings in json
-                .AddJsonOptions(options => 
+                .AddJsonOptions(options =>
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
             services.AddDbContext<DataContext>
@@ -36,7 +36,7 @@ namespace TestCaseLegiosoft
 
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo {Title = "Legiosoft Test Case API"});
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Legiosoft Test Case API" });
             });
         }
 

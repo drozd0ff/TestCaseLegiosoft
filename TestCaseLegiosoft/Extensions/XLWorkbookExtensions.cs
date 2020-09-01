@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using ClosedXML.Excel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using ClosedXML.Excel;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Models.Enums;
 using TestCaseLegiosoft.Persistence;
@@ -23,7 +23,7 @@ namespace TestCaseLegiosoft.Extensions
             ws.Columns().AdjustToContents();
         }
 
-        private static void FillWorksheetWithQuery(this IXLWorksheet ws, IQueryable query, 
+        private static void FillWorksheetWithQuery(this IXLWorksheet ws, IQueryable query,
             Dictionary<PropertyInfo, bool> properties)
         {
             List<int> indexes = new List<int>();
@@ -52,7 +52,7 @@ namespace TestCaseLegiosoft.Extensions
 
             var transactions = dataContext.TransactionModels
                 .Select(x =>
-                    new {x.TransactionId, x.TransactionStatus, x.TransactionType, x.ClientName, x.Amount});
+                    new { x.TransactionId, x.TransactionStatus, x.TransactionType, x.ClientName, x.Amount });
 
             ws.FillWorksheetWithQuery(transactions);
         }

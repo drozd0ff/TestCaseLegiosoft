@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using TestCaseLegiosoft.Models.Enums;
 using TestCaseLegiosoft.Queries;
 

@@ -1,9 +1,9 @@
-﻿using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using TestCaseLegiosoft.Extensions;
 using TestCaseLegiosoft.Persistence;
 
