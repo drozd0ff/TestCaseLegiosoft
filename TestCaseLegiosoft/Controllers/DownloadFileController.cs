@@ -29,7 +29,7 @@ namespace TestCaseLegiosoft.Controllers
         public async Task<IActionResult> DownloadFileFilteredByStatus(TransactionStatus statusFilter,
             bool idColumn, bool statusColumn, bool typeColumn, bool clientNameColumn, bool amountColumn)
         {
-            var query = new FilterByStatusQuery(statusFilter,
+            var query = new GetDataByStatusAsXlsxQuery(statusFilter,
                 idColumn, statusColumn, typeColumn, clientNameColumn, amountColumn);
             var result = await _mediator.Send(query);
             return result;
@@ -39,7 +39,7 @@ namespace TestCaseLegiosoft.Controllers
         public async Task<IActionResult> DownloadFileFilteredByType(TransactionType typeFilter,
             bool idColumn, bool statusColumn, bool typeColumn, bool clientNameColumn, bool amountColumn)
         {
-            var query = new FilterByTypeQuery(typeFilter,
+            var query = new GetDataByTypeAsXlsxQuery(typeFilter,
                 idColumn, statusColumn, typeColumn, clientNameColumn, amountColumn);
             var result = await _mediator.Send(query);
             return result;

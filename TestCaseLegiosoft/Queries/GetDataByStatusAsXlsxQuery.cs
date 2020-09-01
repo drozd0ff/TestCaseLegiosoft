@@ -13,12 +13,12 @@ using TestCaseLegiosoft.Persistence;
 
 namespace TestCaseLegiosoft.Queries
 {
-    public class FilterByStatusQuery : IRequest<FileContentResult>
+    public class GetDataByStatusAsXlsxQuery : IRequest<FileContentResult>
     {
         public TransactionStatus StatusFilter { get; }
         public Dictionary<PropertyInfo, bool> ModelProperties { get; set; }
 
-        public FilterByStatusQuery(TransactionStatus statusFilter, params bool[] columns)
+        public GetDataByStatusAsXlsxQuery(TransactionStatus statusFilter, params bool[] columns)
         {
             StatusFilter = statusFilter;
 
@@ -33,16 +33,16 @@ namespace TestCaseLegiosoft.Queries
         }
     }
 
-    public class FilterByStatusHandler : IRequestHandler<FilterByStatusQuery, FileContentResult>
+    public class GetDataByStatusAsXlsxHandler : IRequestHandler<GetDataByStatusAsXlsxQuery, FileContentResult>
     {
         private readonly DataContext _dataContext;
 
-        public FilterByStatusHandler(DataContext dataContext)
+        public GetDataByStatusAsXlsxHandler(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        public Task<FileContentResult> Handle(FilterByStatusQuery request, CancellationToken cancellationToken)
+        public Task<FileContentResult> Handle(GetDataByStatusAsXlsxQuery request, CancellationToken cancellationToken)
         {
             byte[] buffer = new byte[16 * 1024];
             using (var workbook = new XLWorkbook())
