@@ -31,12 +31,13 @@ namespace TestCaseLegiosoft.Controllers
         public ActionResult<IEnumerable<TransactionModel>> Post(IFormFile file)
         {
             // Since we are not allowed to use automapper
-            // (I think all third party CSV parsers are automappers at some point)
+            // (As it seems to me all third party CSV parsers are automappers at some point)
             // we will try to parse CSV manually
             // Also we assume that input CSV file really have commas as separators,
             // fields don't have extra whitespaces and aren't enclosed in quotes
             try
             {
+                //TODO CHANGE RETURN AND DELETE THIS LIST
                 List<TransactionModel> updateList = new List<TransactionModel>();
 
                 DataTable table = FillDataTableWithStream(file.OpenReadStream());
@@ -52,7 +53,7 @@ namespace TestCaseLegiosoft.Controllers
             }
         }
         
-        public static DataTable FillDataTableWithStream(Stream stream) 
+        private static DataTable FillDataTableWithStream(Stream stream) 
         {
             DataTable table = new DataTable();
 
@@ -92,7 +93,7 @@ namespace TestCaseLegiosoft.Controllers
             return table;
         }
 
-        public static void MergeTable(DataTable table, string connectionString)
+        private static void MergeTable(DataTable table, string connectionString)
         {
             string createTmpTable = "CREATE TABLE #DataToMerge (TransactionId int, TransactionStatus nvarchar(MAX), " +
                               "TransactionType nvarchar(MAX), ClientName nvarchar(MAX), Amount decimal(13, 2))";
