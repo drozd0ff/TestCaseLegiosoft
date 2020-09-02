@@ -1,12 +1,11 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using ClosedXML.Excel;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using TestCaseLegiosoft.Extensions;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Models.Enums;
@@ -14,14 +13,14 @@ using TestCaseLegiosoft.Persistence;
 
 namespace TestCaseLegiosoft.Queries
 {
-    public class GetDataByTypeAsXlsxQuery : IRequest<FileContentResult>
+    public class GetDataByStatusAsXlsxQuery : IRequest<FileContentResult>
     {
-        public TransactionType TypeFilter { get; set; }
+        public TransactionStatus StatusFilter { get; }
         public Dictionary<PropertyInfo, bool> ModelProperties { get; set; }
 
-        public GetDataByTypeAsXlsxQuery(TransactionType type, params bool[] columns)
+        public GetDataByStatusAsXlsxQuery(TransactionStatus statusFilter, params bool[] columns)
         {
-            TypeFilter = type;
+            StatusFilter = statusFilter;
 
             ModelProperties = new Dictionary<PropertyInfo, bool>();
 
@@ -34,21 +33,21 @@ namespace TestCaseLegiosoft.Queries
         }
     }
 
-    public class GetDataByTypeAsXlsxHandler : IRequestHandler<GetDataByTypeAsXlsxQuery, FileContentResult>
+    public class GetDataByStatusAsXlsxHandler : IRequestHandler<GetDataByStatusAsXlsxQuery, FileContentResult>
     {
         private readonly DataContext _dataContext;
 
-        public GetDataByTypeAsXlsxHandler(DataContext dataContext)
+        public GetDataByStatusAsXlsxHandler(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        public Task<FileContentResult> Handle(GetDataByTypeAsXlsxQuery request, CancellationToken cancellationToken)
+        public Task<FileContentResult> Handle(GetDataByStatusAsXlsxQuery request, CancellationToken cancellationToken)
         {
             byte[] buffer = new byte[16 * 1024];
             using (var workbook = new XLWorkbook())
             {
-                workbook.InsertData(_dataContext, request.TypeFilter, request.ModelProperties);
+                workbook.InsertData(_dataContext, request.StatusFilter, request.ModelProperties);
 
                 using (MemoryStream stream = new MemoryStream())
                 {
