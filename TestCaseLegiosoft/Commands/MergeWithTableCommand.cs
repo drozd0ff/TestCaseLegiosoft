@@ -41,6 +41,11 @@ namespace TestCaseLegiosoft.Commands
             // fields don't have extra whitespaces and aren't enclosed in quotes
             try
             {
+                if (!request.File.FileName.EndsWith(".csv"))
+                {
+                    throw new FormatException("Please choose .csv file");
+                }
+
                 DataTable table = FillDataTableWithStream(request.File.OpenReadStream());
 
                 MergeTable(table, Configuration.GetConnectionString("TestDatabase"));

@@ -22,6 +22,12 @@ namespace TestCaseLegiosoft.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Task №3
+        /// Get transactions filtered by status
+        /// </summary>
+        /// <param name="statusFilter"></param>
+        /// <returns></returns>
         [HttpGet("GetDataFilteredByTransactionStatus")]
         public Task<IEnumerable<TransactionModel>> GetDataFilteredByStatus(TransactionStatus statusFilter)
         {
@@ -30,6 +36,12 @@ namespace TestCaseLegiosoft.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Task №3
+        /// Get transactions filtered by type
+        /// </summary>
+        /// <param name="typeFilter"></param>
+        /// <returns></returns>
         [HttpGet("GetDataFilteredByTransactionType")]
         public Task<IEnumerable<TransactionModel>> GetDataFilteredByType(TransactionType typeFilter)
         {
@@ -38,6 +50,13 @@ namespace TestCaseLegiosoft.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Task №4
+        /// Change transaction status in transaction with given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newStatus"></param>
+        /// <returns></returns>
         [HttpPut("ChangeTransactionStatusCommand")]
         public Task<Response<TransactionModel>> ChangeTransactionStatusById(int id, TransactionStatus newStatus)
         {
@@ -46,6 +65,12 @@ namespace TestCaseLegiosoft.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Task №5
+        /// Delete transaction with given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("DeleteTransactionByIdCommand")]
         public Task<Response<TransactionModel>> DeleteTransactionById(int id)
         {

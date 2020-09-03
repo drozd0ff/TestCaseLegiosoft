@@ -28,6 +28,11 @@ namespace TestCaseLegiosoft.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Add 5 hardcoded transactions with some random statuses
+        /// (They DO NOT always match with transaction statuses from "data.csv" file)
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("AddSomeDataToDb")]
         public async Task<ActionResult> AddSomeDataToDb()
         {
@@ -79,6 +84,10 @@ namespace TestCaseLegiosoft.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Get all transactions
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetAllData")]
         public async Task<ActionResult<IEnumerable<TransactionModel>>> GetSomeData()
         {
@@ -87,6 +96,10 @@ namespace TestCaseLegiosoft.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Remove all transactions
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("RemoveAllData")]
         public ActionResult DeleteSomeData()
         {
