@@ -47,8 +47,8 @@ namespace TestCaseLegiosoft.Commands
             updatedTransaction.TransactionStatus = request.NewStatus;
 
             // Use this approach instead of 'Update' because 'Update' throws InvalidOperationException
-            // The instance of entity type ... cannot be tracked
-            // because another instance of this type with the same key is already being tracked
+            // "The instance of entity type ... cannot be tracked
+            // because another instance of this type with the same key is already being tracked"
             // (or you can override .Update())
             _dataContext.Entry(transactionWithGivenId).CurrentValues.SetValues(updatedTransaction);
 

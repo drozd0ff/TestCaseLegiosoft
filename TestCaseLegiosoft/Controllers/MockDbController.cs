@@ -5,12 +5,14 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Models.Enums;
 using TestCaseLegiosoft.Persistence;
 
 namespace TestCaseLegiosoft.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MockDbController : ControllerBase
@@ -26,7 +28,7 @@ namespace TestCaseLegiosoft.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
+        [HttpPost("AddSomeDataToDb")]
         public async Task<ActionResult> AddSomeDataToDb()
         {
             IEnumerable<TransactionModel> someData = new List<TransactionModel>
@@ -77,7 +79,7 @@ namespace TestCaseLegiosoft.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("GetAllData")]
         public async Task<ActionResult<IEnumerable<TransactionModel>>> GetSomeData()
         {
             var result = await _context.TransactionModels.ToListAsync();
@@ -85,7 +87,7 @@ namespace TestCaseLegiosoft.Controllers
             return result;
         }
 
-        [HttpDelete]
+        [HttpDelete("RemoveAllData")]
         public ActionResult DeleteSomeData()
         {
             _context.TransactionModels.RemoveRange(_context.TransactionModels.ToList());

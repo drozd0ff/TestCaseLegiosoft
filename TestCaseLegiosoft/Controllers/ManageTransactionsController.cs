@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TestCaseLegiosoft.Commands;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Models.Enums;
@@ -9,6 +10,7 @@ using TestCaseLegiosoft.Queries;
 
 namespace TestCaseLegiosoft.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ManageTransactionsController : ControllerBase

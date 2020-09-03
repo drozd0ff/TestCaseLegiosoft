@@ -1,11 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TestCaseLegiosoft.Models.Enums;
 using TestCaseLegiosoft.Queries;
 
 namespace TestCaseLegiosoft.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class DownloadFileController : ControllerBase
