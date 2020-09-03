@@ -1,10 +1,8 @@
-﻿using DocumentFormat.OpenXml.Drawing.Charts;
-
-namespace TestCaseLegiosoft.Commands
+﻿namespace TestCaseLegiosoft.Commands
 {
     public static class Response
     {
-        public static Response<T> Fail<T>(string message, T data = default) => 
+        public static Response<T> Fail<T>(string message, T data = default) =>
             new Response<T>(data, message, true);
 
         public static Response<T> Ok<T>(T data, string message) =>

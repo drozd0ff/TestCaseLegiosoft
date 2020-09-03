@@ -1,7 +1,7 @@
-﻿using System.Linq;
+﻿using MediatR;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MediatR;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Persistence;
 
