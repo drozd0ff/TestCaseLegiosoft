@@ -1,5 +1,5 @@
 # TestCaseLegiosoft
-ASP.NET Core Web Api for simple transaction management, available functions:
+ASP.NET Core Web Api for simple transaction management, with CQRS implemented via MediatR. Available functions:
 - Import .csv, 
 - Export .xlsx (filtered by status/type),
 - Get transactions (filtered by status/type), Update transaction status by Id, Delete transaction by Id
