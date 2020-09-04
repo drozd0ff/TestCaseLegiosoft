@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MediatR;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -6,23 +9,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using MediatR;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using TestCaseLegiosoft.Models;
 
-namespace TestCaseLegiosoft.Commands
+namespace TestCaseLegiosoft.Commands.LogInUser
 {
-    public class LogInUserCommand : IRequest<Response<string>>
-    {
-        public UserModel User { get; }
-
-        public LogInUserCommand(UserModel user)
-        {
-            User = user;
-        }
-    }
-
     public class LogInUserHandler : IRequestHandler<LogInUserCommand, Response<string>>
     {
         //TODO Hardcoded only for demo purposes, use DB instead

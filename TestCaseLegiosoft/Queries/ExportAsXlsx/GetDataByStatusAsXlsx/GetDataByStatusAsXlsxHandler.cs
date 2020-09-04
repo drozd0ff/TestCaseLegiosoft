@@ -1,38 +1,14 @@
 ﻿using ClosedXML.Excel;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TestCaseLegiosoft.Extensions;
-using TestCaseLegiosoft.Models;
-using TestCaseLegiosoft.Models.Enums;
 using TestCaseLegiosoft.Persistence;
 
-namespace TestCaseLegiosoft.Queries
+namespace TestCaseLegiosoft.Queries.ExportAsXlsx.GetDataByStatusAsXlsx
 {
-    public class GetDataByStatusAsXlsxQuery : IRequest<FileContentResult>
-    {
-        public TransactionStatus StatusFilter { get; }
-        public Dictionary<PropertyInfo, bool> ModelProperties { get; set; }
-
-        public GetDataByStatusAsXlsxQuery(TransactionStatus statusFilter, params bool[] columns)
-        {
-            StatusFilter = statusFilter;
-
-            ModelProperties = new Dictionary<PropertyInfo, bool>();
-
-            PropertyInfo[] transactionModelProperties = typeof(TransactionModel).GetProperties();
-
-            for (int i = 0; i < columns.Length; i++)
-            {
-                ModelProperties.Add(transactionModelProperties[i], columns[i]);
-            }
-        }
-    }
-
     public class GetDataByStatusAsXlsxHandler : IRequestHandler<GetDataByStatusAsXlsxQuery, FileContentResult>
     {
         private readonly DataContext _dataContext;

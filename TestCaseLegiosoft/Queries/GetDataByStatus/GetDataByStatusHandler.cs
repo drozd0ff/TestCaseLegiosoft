@@ -5,21 +5,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TestCaseLegiosoft.Models;
-using TestCaseLegiosoft.Models.Enums;
 using TestCaseLegiosoft.Persistence;
 
-namespace TestCaseLegiosoft.Queries
+namespace TestCaseLegiosoft.Queries.GetDataByStatus
 {
-    public class GetDataByStatusQuery : IRequest<IEnumerable<TransactionModel>>
-    {
-        public TransactionStatus StatusFilter { get; }
-
-        public GetDataByStatusQuery(TransactionStatus statusFilter)
-        {
-            StatusFilter = statusFilter;
-        }
-    }
-
     public class GetDataByStatusHandler : IRequestHandler<GetDataByStatusQuery, IEnumerable<TransactionModel>>
     {
         private readonly DataContext _dataContext;

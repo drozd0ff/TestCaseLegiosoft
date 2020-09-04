@@ -1,9 +1,9 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using TestCaseLegiosoft.Commands;
+using TestCaseLegiosoft.Commands.MergeWithTable;
 
 namespace TestCaseLegiosoft.Controllers
 {

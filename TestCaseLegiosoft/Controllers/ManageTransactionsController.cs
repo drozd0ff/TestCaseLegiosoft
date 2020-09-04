@@ -1,12 +1,15 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using TestCaseLegiosoft.Commands;
+using TestCaseLegiosoft.Commands.ChangeTransactionStatus;
+using TestCaseLegiosoft.Commands.DeleteTransactionById;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Models.Enums;
-using TestCaseLegiosoft.Queries;
+using TestCaseLegiosoft.Queries.GetDataByStatus;
+using TestCaseLegiosoft.Queries.GetDataByType;
 
 namespace TestCaseLegiosoft.Controllers
 {

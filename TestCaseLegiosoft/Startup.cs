@@ -1,19 +1,19 @@
-using System;
-using System.IO;
-using System.Reflection;
-using System.Text;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using System.Text.Json.Serialization;
 using TestCaseLegiosoft.Persistence;
 
 namespace TestCaseLegiosoft
@@ -97,7 +97,7 @@ namespace TestCaseLegiosoft
                     ValidIssuer = Configuration["Jwt:Issuer"],
                     ValidAudience = Configuration["Jwt:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])) 
+                        Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 };
             });
         }

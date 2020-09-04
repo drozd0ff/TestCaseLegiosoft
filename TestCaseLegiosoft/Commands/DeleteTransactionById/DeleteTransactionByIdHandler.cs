@@ -5,17 +5,8 @@ using System.Threading.Tasks;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Persistence;
 
-namespace TestCaseLegiosoft.Commands
+namespace TestCaseLegiosoft.Commands.DeleteTransactionById
 {
-    public class DeleteTransactionByIdCommand : IRequest<Response<TransactionModel>>
-    {
-        public int Id { get; set; }
-        public DeleteTransactionByIdCommand(int id)
-        {
-            Id = id;
-        }
-    }
-
     public class DeleteTransactionByIdHandler : IRequestHandler<DeleteTransactionByIdCommand, Response<TransactionModel>>
     {
         private readonly DataContext _dataContext;

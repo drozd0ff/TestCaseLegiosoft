@@ -1,9 +1,11 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using TestCaseLegiosoft.Models.Enums;
-using TestCaseLegiosoft.Queries;
+using TestCaseLegiosoft.Queries.ExportAsXlsx.GetAllDataAsXlsx;
+using TestCaseLegiosoft.Queries.ExportAsXlsx.GetDataByStatusAsXlsx;
+using TestCaseLegiosoft.Queries.ExportAsXlsx.GetDataByTypeAsXlsx;
 
 namespace TestCaseLegiosoft.Controllers
 {

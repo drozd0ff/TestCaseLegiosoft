@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -11,18 +10,8 @@ using System.Threading.Tasks;
 using TestCaseLegiosoft.Models;
 using TestCaseLegiosoft.Models.Enums;
 
-namespace TestCaseLegiosoft.Commands
+namespace TestCaseLegiosoft.Commands.MergeWithTable
 {
-    public class MergeWithTableCommand : IRequest<string>
-    {
-        public IFormFile File { get; }
-
-        public MergeWithTableCommand(IFormFile file)
-        {
-            File = file;
-        }
-    }
-
     public class MergeWithTableHandler : IRequestHandler<MergeWithTableCommand, string>
     {
         public IConfiguration Configuration { get; }

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using TestCaseLegiosoft.Commands;
+using TestCaseLegiosoft.Commands.LogInUser;
 using TestCaseLegiosoft.Models;
 
 namespace TestCaseLegiosoft.Controllers

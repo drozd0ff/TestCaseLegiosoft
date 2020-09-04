@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 using TestCaseLegiosoft.Extensions;
 using TestCaseLegiosoft.Persistence;
 
-namespace TestCaseLegiosoft.Queries
+namespace TestCaseLegiosoft.Queries.ExportAsXlsx.GetAllDataAsXlsx
 {
-    public class GetAllDataAsXlsxQuery : IRequest<FileContentResult>
-    { }
-
     public class GetAllDataAsXlsxHandler : IRequestHandler<GetAllDataAsXlsxQuery, FileContentResult>
     {
         private readonly DataContext _dataContext;
