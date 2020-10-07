@@ -19,7 +19,7 @@ namespace TestCaseLegiosoft.Commands.ChangeTransactionStatus
         public async Task<Response<TransactionModel>> Handle(ChangeTransactionStatusCommand request, CancellationToken cancellationToken)
         {
             var transactionWithGivenId = _dataContext.TransactionModels
-                .Where(x => x.TransactionId == request.Id).FirstOrDefault();
+                .FirstOrDefault(x => x.TransactionId == request.Id);
 
             if (transactionWithGivenId == null)
             {
